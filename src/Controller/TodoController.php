@@ -12,6 +12,7 @@
          * @Method({"GET"})
          */
         public function index() {
-            return $this->render('todos/index.html.twig');
+            $todos = [];
+            return $this->render('todos/index.html.twig', array('todos' => $todos));
         }
     }

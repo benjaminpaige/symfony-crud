@@ -3,5 +3,31 @@
 {% block title %}Symfony Todos{% endblock %}
 
 {% block body %}
-    <h1>Todo Page</h1>
+    {% if todos %}
+        <h1>Todos</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in todos %}
+                    <tr>
+                        <td>{{todo.title}}</td>
+                        <td>{{todo.description}}</td>
+                        <td>
+                            <a href="/todo/{{todo.id}}" class="btn dtn-dark">View</a>
+                            <a href="/todo/edit/{{todo.id}}" class="btn dtn-dark">Edit</a>
+                            <a href="/todo/delete/{{todo.id}}" class="btn dtn-dark">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Much todo about nothing</p>
+    {% endif %}
 {% endblock %}
