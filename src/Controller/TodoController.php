@@ -4,13 +4,14 @@
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-    class TodoController {
+    class TodoController extends Controller{
         /**
          * @Route("/")
-         * @Method("GET")
+         * @Method({"GET"})
          */
         public function index() {
-            return new Response('<html><body>Hello World</body></html>');
+            return $this->render('todos/index.html.twig');
         }
     }
