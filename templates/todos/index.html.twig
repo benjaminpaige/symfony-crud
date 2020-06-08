@@ -19,8 +19,8 @@
                         <td>{{todo.title}}</td>
                         <td>{{todo.description}}</td>
                         <td>
-                            <a href="/todo/{{todo.id}}" class="btn dtn-dark">View</a>
-                            <a href="/todo/edit/{{todo.id}}" class="btn dtn-dark">Edit</a>
+                            <a href="/todo/{{todo.id}}" class="btn">View</a>
+                            <a href="/todo/edit/{{todo.id}}" class="btn">Edit</a>
                             <a href="#" class="btn btn-danger delete-todo" data-custom_attr="delete-btn" data-id="{{todo.id}}">Delete</a>
                         </td>
                     </tr>
@@ -33,5 +33,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="js/main.js"/>
+    <script src="js/main.js"></script>
 {% endblock %}
