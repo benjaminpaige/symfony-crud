@@ -9,13 +9,22 @@
 
     class TodoController extends Controller{
         /**
-         * @Route("/")
+         * @Route("/", name="todo_list")
          * @Method({"GET"})
          */
         public function index() {
             $todos = $this->getDoctrine()->getRepository(Todo::class)->findAll();
             return $this->render('todos/index.html.twig', array('todos' => $todos));
         }
+
+        /**
+         * @Route("/todo/{id}", name="todo_show")
+         */
+
+         public function show($id) {
+            $todo = $this->getDoctrine()->getRepository(Todo::class)->find($id);
+            return $this->render('todos/show.html.twig', array('todo' => $todo));
+         }
 
         /**
          * @Route("/todo/save")
