@@ -103,21 +103,4 @@
             $todo = $this->getDoctrine()->getRepository(Todo::class)->find($id);
             return $this->render('todos/show.html.twig', array('todo' => $todo));
          }
-
-        /**
-         * @Route("/todo/save")
-         */
-        // public function save() {
-        //     $entityManager = $this->getDoctrine()->getManager();
-
-        //     $todo = new Todo();
-        //     $todo->setTitle('Todo two');
-        //     $todo->setDescription('Todo description for the second todo whats up yo');
-
-        //     $entityManager->persist($todo);
-
-        //     $entityManager->flush();
-
-        //     return new Response('Saved an article with the id of '.$todo->getId());
-        // }
     }
