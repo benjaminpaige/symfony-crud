@@ -30,11 +30,24 @@
         public function new(Request $request) {
             $todo = new Todo();
             $formControlClassAttr = array('attr' => array('class' => 'form-control'));
+            
             $form = $this->createFormBuilder($todo)
                  ->add('title', TextType::class, $formControlClassAttr)
                  ->add('description', TextareaType::class, $formControlClassAttr)
                  ->add('save', SubmitType::class, array('label' => 'Create', 'attr' => array('class' => 'btn btn-primary mt-3')))
                  ->getForm();
+
+            $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid()) {
+                $todo = $form->getData();
+
+                $entityManager =  $this->getDoctrine()->getManager();
+                $entityManager->persist($todo);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('todo_list');
+            }
                 
             return $this->render('todos/new.html.twig', array('form' => $form->createView()));
          }
