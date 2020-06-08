@@ -5,7 +5,7 @@
 {% block body %}
     {% if todos %}
         <h1>Todos</h1>
-        <table class="table table-striped">
+        <table id="todos" class="table table-striped">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -21,7 +21,7 @@
                         <td>
                             <a href="/todo/{{todo.id}}" class="btn dtn-dark">View</a>
                             <a href="/todo/edit/{{todo.id}}" class="btn dtn-dark">Edit</a>
-                            <a href="/todo/delete/{{todo.id}}" class="btn dtn-dark">Delete</a>
+                            <a href="#" class="btn btn-danger delete-todo" data-custom_attr="delete-btn" data-id="{{todo.id}}">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -30,4 +30,8 @@
     {% else %}
         <p>Much todo about nothing</p>
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="js/main.js"/>
 {% endblock %}

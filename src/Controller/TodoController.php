@@ -22,6 +22,21 @@
             $todos = $this->getDoctrine()->getRepository(Todo::class)->findAll();
             return $this->render('todos/index.html.twig', array('todos' => $todos));
         }
+
+        /**
+         * @Route("/todo/delete/{id}", name="todo_delete")
+         * @Method({"DELETE"})
+         */
+        public function delete(Request $request, $id) {
+            $todo = $this->getDoctrine()->getRepository(Todo::class)->find($id);
+
+            $entityManager =  $this->getDoctrine()->getManager();
+                $entityManager->remove($todo);
+                $entityManager->flush();
+
+            $response = new Response();
+            $response->send();
+         }
          
         /**
          * @Route("/todo/new", name="new_todo")
